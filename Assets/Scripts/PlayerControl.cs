@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
 				if (other.tag.Contains (shape.ToString ())) {
 //						other.audio.Play ();
 						Destroy (other.gameObject);
-						audio.Play ();
+						GetComponent<AudioSource>().Play ();
 						gameControl.SendMessage ("AddScore", 0, SendMessageOptions.DontRequireReceiver);
 				} else {
 						finished = true;			

@@ -50,7 +50,7 @@ public class EnemyControl : MonoBehaviour
 								} else {
 										newShape = (GameObject)Instantiate (circlePrefabs, releasePoint.position, Quaternion.identity);
 								}
-								newShape.rigidbody2D.AddForce (Vector2.up * -speed);
+								newShape.GetComponent<Rigidbody2D>().AddForce (Vector2.up * -speed);
 
 								speed += speedPace;
 								timeDelay -= timePace;
@@ -66,16 +66,16 @@ public class EnemyControl : MonoBehaviour
 				timeDelay = -1;
 		
 				foreach (GameObject square in GameObject.FindGameObjectsWithTag("Square")) {
-						square.rigidbody2D.Sleep ();//.AddForce (Vector2.right*100);
+						square.GetComponent<Rigidbody2D>().Sleep ();//.AddForce (Vector2.right*100);
 						//Destroy (square);
 				}
 
 				foreach (GameObject circle in GameObject.FindGameObjectsWithTag("Circle")) {
-						circle.rigidbody2D.Sleep ();//.AddForce (Vector2.right*100);
+						circle.GetComponent<Rigidbody2D>().Sleep ();//.AddForce (Vector2.right*100);
 						//Destroy (circle);
 				}
 
-				audio.Play ();
+				GetComponent<AudioSource>().Play ();
 
 				Application.LoadLevel ("Menu");
 		}
